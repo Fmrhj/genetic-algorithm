@@ -40,7 +40,7 @@ We repeat these evolution steps for certain amount of epochs or until an exit co
 
 ### Example 
 
-An example fittness function could be something like this:
+An example fitness function could be something like this:
 
 ```python 
 def fitness(x, y):
