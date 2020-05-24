@@ -17,13 +17,12 @@ def crossover(parents, offspring_size):
     offspring = np.empty(offspring_size)
     crossover_point = np.uint8(offspring_size[0]/2)
     for k in range(offspring_size[1]):
-        # Index of the first parent to mate.
          parent1_idx = k%parents.shape[0]
-         # Index of the second parent to mate.
+         # Index of the second parent to mate
          parent2_idx = (k+1)%parents.shape[0]
-         # The new offspring will have its first half of its genes taken from the first parent.
+         # Half of the first parent 
          offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
-         # The new offspring will have its second half of its genes taken from the second parent.
+         # Half if the second parent 
          offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
     return offspring 
 
@@ -31,7 +30,7 @@ def mutate(offspring_crossover):
     for idx in range(offspring_crossover.shape[0]):
         
         # select randomly the gene where randomness is going to be added 
-        g = np.random.choice(range(offspring.shape[0]))
+        g = np.random.choice(range(offspring_crossover.shape[0]))
 
         # The random value to be added to the gene.
         offspring_crossover[idx][g] = offspring_crossover[idx][g] + np.random.normal(0.5, 0.25, 1)
