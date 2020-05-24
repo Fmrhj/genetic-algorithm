@@ -48,7 +48,7 @@ def fitness(x, y):
 ```
 ![](public/fitness_function.png)
 
-We can limit our search to the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with `ind_parameters`. Likewise, we control the population parameters with the `pop_parameters` dictionary.
+We can limit our search to evaluate individuals ![formula](https://render.githubusercontent.com/render/math?math=(x_i, y_i)) within the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with the `ind_parameters` dictionary. Likewise, we control the population parameters with the `pop_parameters`.
 
 ```python 
 from ga import Individual, Population, Evolution, fitness
@@ -76,6 +76,8 @@ for _ in range(epochs):
     
 print(evo._best_individual, evo._best_score)
 ```
+
+The results are close the global optimum and the best individual does not change after 50 epochs.
 
 ```python
 # Output
