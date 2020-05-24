@@ -50,14 +50,14 @@ class Population:
                                                      crossover_point:]
         return offspring
         
-    def mutate(self, offspring_crossover, ind_params):
+    def mutate(self, offspring_crossover, ind_params, pop_params):
         for idx in range(offspring_crossover.shape[0]):
             # select randomly the gene where randomness is going to be added
             g = np.random.choice(range(offspring_crossover.shape[0]))
 
             # The random value to be added to the gene.
             offspring_crossover[idx][g] = offspring_crossover[idx][g] + \
-                np.random.normal(0.2, 0.25, 1)
+                np.random.normal(pop_params['mutation_mean'], pop_params['mutation_sd'], 1)
 
             # apply upper and lower bounds
             if offspring_crossover[idx][g] > ind_params['upper_bound']:

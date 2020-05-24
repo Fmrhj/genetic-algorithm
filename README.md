@@ -10,30 +10,33 @@ A [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) (GA) is a
 2. **Selection**: calculate the best candidates based on a fitness function we want to optimize. We select the best `j` *parents* to combine. This parameter is arbitrary. 
 3. **Crossover**: we combine the parents of last step to produce an *offspring*. These are `s` new individuals in our population.  
 4. **Mutation**: Add *randomness* to the generated offspring. 
-5. **Replacement**: Select the `l` fittest candidates of the population to evaluate on the next epoch.
+5. **Replacement**: Select the `l` fittest individuals of the population to evaluate on the next epoch.
+
+We repeat these evolution steps for certain amount of epochs or until an exit condition is met.
 
 ![](public/genetic-algo.png)
 
 ## GA implementation 
+
+### Dependencies 
+
+- [Numpy](https://numpy.org/) >= 1.15
 
 ### Hyperparameters 
 
 - Individuals: 
     - `lower_bound`
     - `upper_bound`
-    - `number_of_genes`
+    - `number_of_genes`: dimension of the search space. In this implementation it indicates the shape of the array that represents each individual.  
 
 - Population:
-    - `n_parents`
-    - `offspring_size`
-    - `size`
+    - `n_parents`: `j` parents.   
+    - `offspring_size`: the `s` new individuals from combining `j`parents. 
+    - `mutation_mean`, `mutation_sd`: mean and standard deviation of the Gaussian noise added in the mutation step.
+    - `size`: maximum size of the population or `l` fittest individuals to survive for the next epoch. 
 
 - Evolution: 
-    - `epochs`
-
-### Dependencies 
-
-- [Numpy](https://numpy.org/) 
+    - `epochs`: number of times that we repet each evolution step. 
 
 ### Example 
 
@@ -56,6 +59,8 @@ ind_parameters = {'lower_bound': -2,
 
 pop_parameters = {'n_parents': 6,
                   'offspring_size':(2,2),
+                  'mutation_mean': 0.25,
+                  'mutation_sd': 0.5,
                   'size': 10}
 
 evo = Evolution(fitness, Population, Individual, pop_parameters, ind_parameters, fitness)
@@ -63,7 +68,7 @@ evo = Evolution(fitness, Population, Individual, pop_parameters, ind_parameters,
 # Repeat the evolution step over 200 epochs
 epochs = 200
 
-# Record best score history 
+# Record fitness history 
 history = []
 for _ in range(epochs):
     evo.step()
