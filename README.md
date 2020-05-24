@@ -32,7 +32,7 @@ We repeat these evolution steps for certain amount of epochs or until an exit co
 - Population:
     - `n_parents`: `j` parents.   
     - `offspring_size`: the `s` new individuals from combining `j`parents. 
-    - `mutation_mean`, `mutation_sd`: mean and standard deviation of the Gaussian noise added in the mutation step.
+    - `mutation_mean`, `mutation_sd`: mean and standard deviation of the Gaussian noise added during the mutation step.
     - `size`: maximum size of the population or `l` fittest individuals to survive for the next epoch. 
 
 - Evolution: 
