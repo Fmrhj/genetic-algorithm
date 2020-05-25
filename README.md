@@ -36,7 +36,7 @@ We repeat these evolution steps for certain amount of epochs or until an exit co
     - `size`: maximum size of the population or `l` fittest individuals to survive for the next epoch. 
 
 - Evolution: 
-    - `epochs`: number of times that we repet each evolution step. 
+    - `epochs`: number of times we repet each evolution step. 
 
 ### Example 
 
