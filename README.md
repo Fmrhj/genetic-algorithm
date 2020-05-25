@@ -51,7 +51,7 @@ def fitness(x, y):
 ```
 ![](public/fitness_function.png)
 
-We can limit our search to evaluate individuals ![formula](https://render.githubusercontent.com/render/math?math=(x_i, y_i)) within the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with the `ind_parameters` dictionary. Likewise, we control the population parameters with the `pop_parameters`.
+We can limit our search to evaluate individuals ![formula](https://render.githubusercontent.com/render/math?math=(x_i,y_i)) within the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with the `ind_parameters` dictionary. Likewise, we control the population parameters with the `pop_parameters`.
 
 ```python 
 from ga import Individual, Population, Evolution, fitness
