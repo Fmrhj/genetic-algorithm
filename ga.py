@@ -84,7 +84,7 @@ class Population:
 
 
 class Evolution:
-    def __init__(self, fitness, population_class, individual_class,
+    def __init__(self, population_class, individual_class,
                  pop_parameters, ind_parameters, fitness_function):
         self.fitness = fitness_function
         self.population_class = population_class
