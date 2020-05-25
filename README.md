@@ -80,7 +80,7 @@ for _ in range(epochs):
 print(evo._best_individual, evo._best_score)
 ```
 
-The results are close the global optimum and the best individual does not change after 50 epochs.
+The results are really close to the global optimum within this domain and the best individual does not change after 50 epochs.
 
 ```python
 # Output
