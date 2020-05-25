@@ -27,7 +27,9 @@ We repeat these evolution steps for certain amount of epochs or until an exit co
 - Individuals: 
     - `lower_bound`
     - `upper_bound`
-    - `number_of_genes`: dimension of the search space. In this implementation it indicates the shape of the array that represents each individual.  
+    - `number_of_genes`: dimension of the search space. In this implementation it indicates the shape of the array that represents each individual.
+    | Note: The number of genes of each individual and the fitness function must be congruent |
+    | --- |
 
 - Population:
     - `n_parents`: `j` parents.   
