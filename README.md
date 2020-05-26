@@ -66,7 +66,7 @@ pop_parameters = {'n_parents': 6,
                   'mutation_sd': 0.5,
                   'size': 10}
 
-evo = Evolution(fitness, Population, Individual, pop_parameters, ind_parameters, fitness)
+evo = Evolution(Population, Individual, pop_parameters, ind_parameters, fitness)
 
 # Repeat the evolution step over 200 epochs
 epochs = 200
