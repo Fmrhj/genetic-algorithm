@@ -1,5 +1,5 @@
 *.ipynb_checkpoints
 *.vscode
-__pycache_
+__pycache__
 *.ipynb
 ga_modules.py

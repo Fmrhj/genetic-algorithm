@@ -61,32 +61,44 @@ ind_parameters = {'lower_bound': -2,
                   'number_of_genes': 2}
 
 pop_parameters = {'n_parents': 6,
-                  'offspring_size':(2,2),
+                  'offspring_size':(2, ind_parameters['number_of_genes']),
                   'mutation_mean': 0.25,
                   'mutation_sd': 0.5,
                   'size': 10}
 
 evo = Evolution(Population, Individual, pop_parameters, ind_parameters, fitness)
 
-# Repeat the evolution step over 200 epochs
+# Repeat evolution step 200 epochs
 epochs = 200
 
 # Record fitness history 
 history = []
+x_history = []
+y_history = []
 for _ in range(epochs):
+    print('Epoch {}/{}, Progress: {}%\r'.format(_+1), epochs, np.round((_+1)/epochs)*100, 2)), end="")
     evo.step()
     history.append(evo._best_score)
+    x_history.append(evo._best_individual[0][0])
+    y_history.append(evo._best_individual[0][1])
     
-print(evo._best_individual, evo._best_score)
+print('\Results:')
+print('Best individual:', evo._best_individual[0])
+print('Fitness value of best individual:', evo._best_score)
 ```
 
 The results are really close to the global optimum within this domain and the best individual does not change after 50 epochs.
 
-```python
+```
 # Output
-[array([-1.52637873, -2.        ])] 7.4697265870418414
+Epoch  200/200, Progress 100.0%
+Results:
+Best individual: [-1.52637873, -2.        ]
+Fitness value of best individual: 7.4697265870418414
 ``` 
 ![](public/fitness_history.png)
+
+![](public/individual_values.png)
 
 ## References
 
