@@ -100,7 +100,7 @@ class Evolution:
         parents = self.population.get_parents(self.pop_parameters['n_parents'])
         offspring = self.population.crossover(parents)
         mutation = self.population.mutate(offspring, self.ind_parameters,
-                                          self.population_class)
+                                          self.pop_parameters)
         population_values = [
             self.population.individuals[i].get_values()
             for i in range(self.population.size)
