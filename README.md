@@ -54,6 +54,9 @@ def fitness(x, y):
 We can limit our search to evaluate individuals ![formula](https://render.githubusercontent.com/render/math?math=(x_i,y_i)) within the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with the `ind_parameters` dictionary. Likewise, we control the population parameters with the `pop_parameters`.
 
 ```python 
+import sys
+import numpy as np
+sys.path.append("genetic-algorithm")
 from ga import Individual, Population, Evolution, fitness
 
 ind_parameters = {'lower_bound': -2,
@@ -69,20 +72,20 @@ pop_parameters = {'n_parents': 6,
 evo = Evolution(Population, Individual, pop_parameters, ind_parameters, fitness)
 
 # Repeat evolution step 200 epochs
-epochs = 200
+epochs = 10000
 
 # Record fitness history 
 history = []
 x_history = []
 y_history = []
 for _ in range(epochs):
-    print('Epoch {}/{}, Progress: {}%\r'.format(_+1), epochs, np.round((_+1)/epochs)*100, 2)), end="")
+    print('Epoch {}/{}, Progress: {}%\r'.format(_+1, epochs, np.round(((_+1)/epochs)*100, 2)), end="")
     evo.step()
     history.append(evo._best_score)
     x_history.append(evo._best_individual[0][0])
     y_history.append(evo._best_individual[0][1])
     
-print('\Results:')
+print('\nResults:')
 print('Best individual:', evo._best_individual[0])
 print('Fitness value of best individual:', evo._best_score)
 ```
