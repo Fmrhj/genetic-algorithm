@@ -9,8 +9,8 @@ A [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm) (GA) is a
 1. **Initialization**: initialize a population of *individuals* or candidate solutions to the problem. This initialization can be done by means of random sampling. Each individual is defined by an encoding which we call *genes*. 
 2. **Selection**: calculate the best candidates based on a defined *fitness* function we want to optimize. We select the best `j` *parents* which will be combined. The parameter `j` is arbitrary. 
 3. **Crossover**: we combine the genes of the parents to produce an *offspring*. These are `s` new individuals in our population.  
-4. **Mutation**: Add *randomness* to the generated offspring. We can add e.g. a Gausian noise to one of the genes of the offspring for each individual.
-5. **Replacement**: Select the `l` fittest individuals of the population to evaluate on the next epoch.
+4. **Mutation**: add *randomness* to the generated offspring. We can add e.g. a Gausian noise to one of the genes of the offspring for each individual.
+5. **Replacement**: select the `l` fittest individuals of the population to evaluate on the next epoch.
 
 We repeat these evolution steps for certain amount of epochs or until an exit condition is met.
 
