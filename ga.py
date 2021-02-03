@@ -1,12 +1,8 @@
 import numpy as np
-
-
-def fitness(x, y):
-    return x * (x - 1) * np.cos(2 * x - 1) * np.sin(2 * x - 1) * (y - 2)
-
+from typing import Dict, Optional, List, Callable
 
 class Individual:
-    def __init__(self, params, value=None):
+    def __init__(self, params:Dict, value: List[np.array]=None):
         if value is None:
             self.value = [
                 np.random.uniform(params['lower_bound'], params['upper_bound'], 1)[0]
@@ -21,11 +17,11 @@ class Individual:
 
 class Population:
     def __init__(self,
-                 individual_class,
-                 pop_parameters,
-                 ind_parameters,
-                 fitness_function,
-                 ind_values=None):
+                 individual_class: Individual,
+                 pop_parameters: Dict,
+                 ind_parameters: Dict,
+                 fitness_function: Dict,
+                 ind_values:Optional[List[np.array]] = None):
         self.individual_class = individual_class
         if ind_values is None:
             self.individuals = [
@@ -42,12 +38,12 @@ class Population:
         self.n_parents = pop_parameters['n_parents']
         self.offspring_size = pop_parameters['offspring_size']
 
-    def get_parents(self, n_parents):
+    def get_parents(self, n_parents:int) -> np.array:
         parents = [self.individuals[i].get_values() for i in range(self.size)]
         parents.sort(key=lambda x: self.fitness_function(*x), reverse=True)
         return np.array(parents[:n_parents])
 
-    def crossover(self, parents):
+    def crossover(self, parents:np.array) -> np.array:
         offspring = np.empty(self.offspring_size)
         crossover_point = np.uint8(self.offspring_size[0] / 2)
         for k in range(self.offspring_size[1]):
@@ -60,7 +56,7 @@ class Population:
             offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
         return offspring
 
-    def mutate(self, offspring_crossover, ind_params, pop_params):
+    def mutate(self, offspring_crossover:np.array, ind_params: Dict, pop_params: Dict) -> np.array:
         for idx in range(offspring_crossover.shape[1]):
             # select randomly the gene where randomness is going to be added
             g = np.random.choice(range(offspring_crossover.shape[1]))
@@ -76,8 +72,8 @@ class Population:
         return offspring_crossover
 
 class Evolution:
-    def __init__(self, population_class, individual_class,
-                 pop_parameters, ind_parameters, fitness_function):
+    def __init__(self, population_class: Population, individual_class: Individual,
+                 pop_parameters: Dict, ind_parameters: Dict, fitness_function: Callable):
         self.fitness = fitness_function
         self.population_class = population_class
         self.individual_class = individual_class

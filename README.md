@@ -20,7 +20,7 @@ We repeat these evolution steps for certain amount of epochs or until an exit co
 
 ### Dependencies 
 
-- [Numpy](https://numpy.org/) >= 1.15
+- [Numpy](https://numpy.org/) >= 1.18
 
 ### Hyperparameters 
 
@@ -54,10 +54,13 @@ def fitness(x, y):
 We can limit our search to evaluate individuals ![formula](https://render.githubusercontent.com/render/math?math=(x_i,y_i)) within the domain ![formula](https://render.githubusercontent.com/render/math?math=x\in[-2,2],y\in[-2,2]) with the `ind_parameters` dictionary. Likewise, we control the population parameters with the `pop_parameters`.
 
 ```python 
+# example.py
 import sys
 import numpy as np
-sys.path.append("genetic-algorithm")
-from ga import Individual, Population, Evolution, fitness
+from ga import Individual, Population, Evolution
+
+# Using the fitness function defined above
+# ...
 
 ind_parameters = {'lower_bound': -2,
                   'upper_bound': 2,
