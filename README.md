@@ -75,7 +75,7 @@ pop_parameters = {'n_parents': 6,
 evo = Evolution(Population, Individual, pop_parameters, ind_parameters, fitness)
 
 # Repeat evolution step 200 epochs
-epochs = 10000
+epochs = 200
 
 # Record fitness history 
 history = []
