@@ -3,9 +3,10 @@ from typing import Dict, Callable, Optional
 from ga.population import Population
 from abc import abstractmethod, ABC
 from dataclasses import dataclass
+import numpy as np
 @dataclass
 class Solution:
-    best_individual: Optional[float]
+    best_individual: np.array
     best_score: Optional[float]
 
 class EvolutionBase(ABC):
