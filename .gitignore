@@ -4,3 +4,4 @@ __pycache__
 *.ipynb
 ga_modules.py
 *.lock
+.venv

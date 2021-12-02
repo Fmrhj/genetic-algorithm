@@ -1,7 +1,12 @@
 from abc import abstractmethod
-from typing import Dict, Callable
+from typing import Dict, Callable, Optional
 from ga.population import Population
 from abc import abstractmethod, ABC
+from dataclasses import dataclass
+@dataclass
+class Solution:
+    best_individual: Optional[float]
+    best_score: Optional[float]
 
 class EvolutionBase(ABC):
     @abstractmethod
@@ -36,3 +41,9 @@ class Evolution:
         
         # update population
         self.population = Population(self.pop_parameters, self.ind_parameters, self.fitness, population_values)
+
+    @property
+    def solution(self) -> Optional[Solution]:
+        if self._best_individual is not None:
+            return Solution(self._best_individual[0], self._best_score) 
+        

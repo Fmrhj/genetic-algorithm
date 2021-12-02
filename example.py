@@ -33,8 +33,8 @@ def example():
         y_history.append(evo._best_individual[0][1])
     
     print('\nResults:')
-    print('Best individual:', evo._best_individual[0])
-    print('Fitness value of best individual:', evo._best_score)
+    print('Best individual:', evo.solution.best_individual)
+    print('Fitness value of best individual:', evo.solution.best_score)
 
 example()
     
