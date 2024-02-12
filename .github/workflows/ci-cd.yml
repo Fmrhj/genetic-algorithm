@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distribution 📦 to PyPI
+name: Build & Publish Python Package to PyPI
 
 on: push
 
@@ -52,6 +52,30 @@ jobs:
       - name: Run unit & integration tests and calculate coverage
         run: |
           python3 -m pytest ${{ env.TEST_DIR }} --cov --cov-report xml:coverage.xml --cov-config=.coveragerc
+
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: coverage.xml
+          badge: true
+          fail_below_min: 75
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: "70 80"
+
+      - name: Show coverage report summary
+        run: |
+          cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
 
       - name: Unit tests
         run: >-
