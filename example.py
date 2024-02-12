@@ -1,4 +1,5 @@
 import numpy as np
+
 from ga.evolution import Evolution
 
 
@@ -50,4 +51,5 @@ def run():
         print("Fitness value of best individual:", evo.solution.best_score)
 
 
-run()
+if __name__ == "__main__":
+    run()
