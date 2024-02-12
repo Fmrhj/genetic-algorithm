@@ -1,6 +1,8 @@
 # Genetic Algorithm Class
 
-> Now as [package](https://pypi.org/project/generic-algorithm-light/): [v0.1.1](https://pypi.org/project/generic-algorithm-light/0.1.1/)
+> Now as [package](https://pypi.org/project/generic-algorithm-light/): [last version](https://pypi.org/project/generic-algorithm-light/)
+
+![GitHub release (with filter)](https://img.shields.io/github/v/release/Fmrhj/genetic-algorithm) ![PyPI - Downloads](https://img.shields.io/pypi/dm/generic-algorithm-light) ![GitHub Repo stars](https://img.shields.io/github/stars/Fmrhj/genetic-algorithm?style=social)
 
 Python implementation of a genetic algorithm to solve optimization problems with `n` control variables.
 

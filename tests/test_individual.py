@@ -5,11 +5,7 @@ from ga.individual import Individual
 
 @pytest.fixture
 def invididual_instance() -> Individual:
-    params = {
-        "lower_bound": 1,
-        "upper_bound": 10,
-        "number_of_genes": 100
-    }
+    params = {"lower_bound": 1, "upper_bound": 10, "number_of_genes": 100}
     return Individual(params=params)
 
 
