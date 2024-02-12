@@ -99,7 +99,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.1x"
+          python-version: "3.10.12"
 
       - name: Update __version__.py file
         run: >-
