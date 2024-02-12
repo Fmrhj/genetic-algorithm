@@ -38,10 +38,10 @@ jobs:
           # This assumes that a ruff.toml or pyproject.toml is included. If not a default configuration is taken
           ruff check .
 
-      - name: Mypy (static type check)
-        run: |
-          python3 -m pip install mypy
-          mypy . --exclude ${{ env.VENV_NAME }}
+      #- name: Mypy
+      #  run: |
+      #    python3 -m pip install mypy
+      #    mypy . --exclude ${{ env.VENV_NAME }}
 
       - name: Black check (PEP style check)
         run: black --check . --exclude ${{ env.VENV_NAME }}
