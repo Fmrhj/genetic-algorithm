@@ -102,7 +102,7 @@ jobs:
           python-version: "3.10.12"
 
       - name: Update __version__.py file
-        run: >-
+        run: |
           pip install typer
           python ${{ env.CI_SCRIPTS_DIR }}/set_version.py '${{ env.PACKAGE_VERSION_DIR }}' '${{ github.ref_name }}'
 
