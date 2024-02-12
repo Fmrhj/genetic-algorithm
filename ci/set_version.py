@@ -3,7 +3,7 @@ from pathlib import Path
 
 import typer
 
-VERSION_FILE = "__version__"
+VERSION_FILE = "__version__.py"
 PATTERN_VERSION = r'VERSION\s*=\s*"([^"]+)"'
 
 PYPROJECT_TOML_FILE = "pyproject.toml"
