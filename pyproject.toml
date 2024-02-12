@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 dependencies = ["numpy>=1.22"]
 name = "generic-algorithm-light"
 license = { file = "LICENSE.md" }
-dynamic = ["version"]
+version = "0.0.0"
 description = "A lightweight genetic algorithm package for optimization"
 authors = [{ name = "Fernando Zepeda", email = "fernando.zepeda@pm.me" }]
 readme = "README.md"

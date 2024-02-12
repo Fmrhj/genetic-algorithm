@@ -3,8 +3,11 @@ from pathlib import Path
 
 import typer
 
-VERSION_FILE = "__version__.py"
-PATTERN = r'VERSION\s*=\s*"([^"]+)"'
+VERSION_FILE = "__version__"
+PATTERN_VERSION = r'VERSION\s*=\s*"([^"]+)"'
+
+PYPROJECT_TOML_FILE = "pyproject.toml"
+PATTERN_PYPROJECT_TOML = r'version\s*=\s*"([^"]+)"'
 
 
 def set_version(
@@ -26,19 +29,31 @@ def set_version(
         ValueError: if version could not be read from __version__.py file
     """
 
+    def _find_and_replace(file_path: Path, pattern_version: str) -> tuple[str, str]:
+        with open(file_path, "r") as f:
+            content = f.read()
+            match = re.search(pattern_version, content)
+            if match:
+                version = match.group(1)
+                typer.echo(f"Version: {version}", color=typer.colors.BLUE)
+                return content, version
+            else:
+                raise ValueError("Version not found")
+
     version_file_path = Path(package_dir) / VERSION_FILE
-    with open(version_file_path, "r") as f:
-        content = f.read()
-        match = re.search(PATTERN, content)
-        if match:
-            version = match.group(1)
-            typer.echo(f"Version: {version}", color=typer.colors.BLUE)
-        else:
-            raise ValueError("Version not found")
+    content, version = _find_and_replace(version_file_path, PATTERN_VERSION)
 
     new_version = new_version.replace("v", "").replace("V", "")
+
     with open(version_file_path, "w") as f:
         f.write(content.replace(version, new_version))
+
+    pyproject_toml_file_path = Path(".") / PYPROJECT_TOML_FILE
+    content_toml, version_toml = _find_and_replace(
+        pyproject_toml_file_path, PATTERN_PYPROJECT_TOML
+    )
+    with open(pyproject_toml_file_path, "w") as f:
+        f.write(content_toml.replace(version_toml, new_version))
 
     typer.echo(f"New version -> {new_version}", color=typer.colors.BRIGHT_CYAN)
 
