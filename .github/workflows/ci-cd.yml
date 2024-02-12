@@ -104,6 +104,7 @@ jobs:
       - name: Update __version__.py file
         run: |
           pip install typer
+          echo '${{ github.ref_name }}' 
           python ${{ env.CI_SCRIPTS_DIR }}/set_version.py '${{ env.PACKAGE_VERSION_DIR }}' '${{ github.ref_name }}'
 
       - name: Install pypa/build
@@ -130,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/generic-algorithm-light # Replace <package-name> with your PyPI project name
+      url: https://pypi.org/p/generic-algorithm-light
     permissions:
       id-token: write # IMPORTANT: mandatory for trusted publishing
 
