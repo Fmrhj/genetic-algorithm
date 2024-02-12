@@ -6,7 +6,7 @@ jobs:
   tests:
     name: Test code
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/') != true
+    if: startsWith(github.ref, 'refs/tags/') != true && endsWith(github.ref, 'main') != true
 
     env:
       VENV_NAME: .venv
