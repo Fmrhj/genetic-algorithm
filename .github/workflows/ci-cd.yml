@@ -103,6 +103,7 @@ jobs:
 
       - name: Update __version__.py file
         run: >-
+          pip install typer
           python ${{ env.CI_SCRIPTS_DIR }}/set_version.py '${{ env.PACKAGE_VERSION_DIR }}' '${{ github.ref_name }}'
 
       - name: Install pypa/build
